@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ Bot - AI Support Assistant</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🤖 FAQ Support Bot</h1>
+            <p class="subtitle">Ask questions about the product documentation</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Initialization Panel -->
+            <div id="initPanel" class="panel">
+                <h2>Initialize Document</h2>
+                <div class="form-group">
+                    <label for="docPath">Document Path:</label>
+                    <input type="text" id="docPath" placeholder="e.g., FinAI Comprehensive FAQ.pdf" value="FinAI Comprehensive FAQ.pdf">
+                    <small>Enter the path to your PDF, markdown, or text file</small>
+                </div>
+                <div class="form-group">
+                    <label for="escalationUrl">Escalation URL:</label>
+                    <input type="text" id="escalationUrl" placeholder="http://localhost:5000/escalate" value="http://localhost:5000/escalate">
+                </div>
+                <div class="form-group">
+                    <label for="threshold">Confidence Threshold:</label>
+                    <select id="threshold">
+                        <option value="low">Low (escalate rarely)</option>
+                        <option value="medium" selected>Medium (default)</option>
+                        <option value="high">High (escalate frequently)</option>
+                    </select>
+                </div>
+                <button id="initBtn" class="btn btn-primary">Initialize Document</button>
+                <div id="initStatus" class="status-message"></div>
+            </div>
+
+            <!-- Chat Panel -->
+            <div id="chatPanel" class="panel" style="display: none;">
+                <div class="chat-header">
+                    <h2>Chat with FAQ Bot</h2>
+                    <button id="resetBtn" class="btn btn-secondary">Reset</button>
+                </div>
+                
+                <div id="chatMessages" class="chat-messages"></div>
+                
+                <div class="chat-input-container">
+                    <div class="input-group">
+                        <input type="text" id="questionInput" placeholder="Type your question here..." autocomplete="off">
+                        <button id="sendBtn" class="btn btn-primary">Send</button>
+                    </div>
+                    <div id="loadingIndicator" class="loading" style="display: none;">
+                        <span>Thinking...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Status Bar -->
+        <div id="statusBar" class="status-bar">
+            <span id="statusText">Ready</span>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
+
